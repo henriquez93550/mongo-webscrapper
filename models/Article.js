@@ -1,24 +1,39 @@
-const mongoose = requirw("mongoose");
-// Creates schema
-const Schema = mongoose.Schema;
-// Creates headline schema
-const headlineSchema = new Schema ({
-    headline: {
-        type: String,
-        required: true,
-        unique: true
-    },
+var mongoose = require("mongoose");
+
+// Building schema for articles
+var Schema = mongoose.Schema;
+
+var ArticleSchema = new Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  
+  link: {
+    type: String,
+    required: true
+  },
+  
     summary: {
-        type: String,
-        required: true
+      type: String,
+      required: true
     },
-    date: String,
-    saved: {
-        type: Boolean,
-        default: false
-    }
+  
+ 
+ 
+  note: [ {
+    type: Schema.Types.ObjectId,
+    ref: "Note"
+  }],
+  
+  saved: {
+    type: Boolean,
+    default: false
+  },
 });
 
-const Headline = mongoose.mondel("Headline", headlineSchema);
+// This creates our model from the above schema, using mongoose's model method
+var Article = mongoose.model("Article", ArticleSchema);
 
-module.exports = Headline;
+// Export the Article model
+module.exports = Article;

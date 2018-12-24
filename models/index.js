@@ -1,16 +1,7 @@
-const mongoose = requirw("mongoose");
-// Creates schema
-const Schema = mongoose.Schema;
-// Creates headline schema
-const noteSchema = new Schema ({
-    _headlineId: {
-        type: Schema, Types, ObjectId,
-        ref: "Headline"
-    },
-    date: String,
-    noteText: String
-});
+// Exporting an object containing all of our models
 
-const Note = mongoose.mondel("Note", headlineSchema);
-
-module.exports = Note;
+module.exports = {
+    Article: require("./Article"),
+    Note: require("./Note")
+  };
+  
